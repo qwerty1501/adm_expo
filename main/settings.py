@@ -26,12 +26,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # APPS
+    'apps.main_page.apps.MainPageConfig',
     # REST
     'rest_framework',
     'django_filters',
     'rest_framework_swagger',
     'rest_framework.authtoken',
     # LIB
+    'location_field.apps.DefaultConfig',
     'corsheaders',
     'drf_yasg',
 ]
@@ -111,6 +114,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+#   LOCATION GOOGLE 
+
+LOCATION_FIELD = {
+    'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
+    'provider.google.api_key': '<PLACE YOUR API KEY HERE>',
+    'provider.google.api_libraries': '',
+    'provider.google.map.type': 'ROADMAP',
+}
 
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
