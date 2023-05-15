@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.categories import views
+from apps.main_page import views
 
 urlpatterns = [
     path('category/', views.CategoryList.as_view()),

@@ -38,6 +38,17 @@ class PageOne(models.Model):
         return self.title
     
 
+class Members(models.Model):
+
+    class Meta:
+        db_table = 'members'
+        verbose_name = 'Участник'
+        verbose_name_plural = 'Участники'
+
+    name = models.CharField(verbose_name="", max_length=64)
+    image = models.ImageField(verbose_name='Фотография', upload_to=get_upload_path, null=True, blank=True)
+
+
 class Forum(models.Model):
     
     class Meta:
@@ -91,8 +102,22 @@ class Ellipse(models.Model):
     countries = models.CharField(verbose_name='Стран', max_length=16, blank=True, null=True)
     meetings = models.CharField(verbose_name='B2B встречи', max_length=16, blank=True, null=True)
     exhibitors = models.CharField(verbose_name='Экспонентов', max_length=16, blank=True, null=True)
+
+
+class Video(models.Model):
+
+    class Meta:
+        db_table = 'video'
+        verbose_name = 'Видео'
+        verbose_name_plural = 'Видео'
+
+    title = models.CharField(verbose_name="Заголовок", max_length=256, blank=True, null=True)
+    urel_video = models.URLField(verbose_name="Укажите ссылку на видео", max_length=128)
     
+    def __str__(self):
+        return self.title
     
+
 class Sectors(models.Model):
     
     class Meta:
