@@ -15,6 +15,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.main_page.urls')),
     path('', include('apps_en.main_page_en.urls')),
+    path('', include('apps_en.registration.urls')),
 ] 
 
 urlpatterns += doc_urls

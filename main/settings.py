@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'apps.main_page.apps.MainPageConfig',
     # APPS_EN
     'apps_en.main_page_en.apps.MainPageEnConfig',
+    'apps_en.registration.apps.RegistrationConfig',
     # REST
     'rest_framework',
     'django_filters',
