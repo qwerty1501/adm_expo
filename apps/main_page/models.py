@@ -141,11 +141,11 @@ class Place(models.Model):
         verbose_name = 'Локации'
         verbose_name_plural = 'Локации'
     
-    city = models.CharField(max_length=255)
+    address = models.CharField(verbose_name='Адрес', max_length=255)
     location = PlainLocationField(based_fields=['city'], zoom=7)
     
     def __str__(self):
-        return self.city
+        return self.address
     
     
 class Speakers(models.Model):
@@ -203,6 +203,22 @@ class Partners(models.Model):
     
     def __str__(self):
         return self.name
+    
+
+class PlaceOffice(models.Model):
+    
+    class Meta:
+        db_table = 'location_office'
+        verbose_name = 'Локация офиса'
+        verbose_name_plural = 'Локация офиса'
+    
+    phone = models.CharField(verbose_name='Номер телефона', max_length=16)
+    mail = models.URLField(verbose_name="Почта", blank=True, null=True)
+    address = models.CharField(verbose_name='Адрес', max_length=255)
+    location = PlainLocationField(based_fields=['city'], zoom=7)
+    
+    def __str__(self):
+        return self.address
     
 
 class Socials(models.Model):

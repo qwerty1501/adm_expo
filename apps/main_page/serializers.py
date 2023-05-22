@@ -1,4 +1,4 @@
-from .models import Category, PageOne, Members, Forum, Target, Tasks, Ellipse, Video, Sectors, Place, Speakers, Organizers, Sponsors, Partners, Socials
+from .models import Category, PageOne, Members, Forum, Target, Tasks, Ellipse, Video, Sectors, Place, Speakers, Organizers, Sponsors, Partners, PlaceOffice, Socials
 from rest_framework import serializers as s
 
 
@@ -110,6 +110,13 @@ class PartnersSerializer(s.ModelSerializer):
     
     class Meta:
         model = Partners
+        fields = "__all__"
+        
+        
+class PlaceOfficeSerializer(s.ModelSerializer):
+    
+    class Meta:
+        model = PlaceOffice
         fields = "__all__"
 
 

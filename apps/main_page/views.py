@@ -2,9 +2,9 @@ from rest_framework import generics
 from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-from .models import Category, PageOne, Members, Forum, Target, Tasks, Ellipse, Video, Sectors, Place, Speakers, Organizers, Sponsors, Partners, Socials
+from .models import Category, PageOne, Members, Forum, Target, Tasks, Ellipse, Video, Sectors, Place, Speakers, Organizers, Sponsors, Partners, PlaceOffice, Socials
 from .serializers import CategorySerializer, PageOneSerializer, MembersSerializer, ForumSerializer, TargetSerializer, TasksSerializer, EllipseSerializer, VideoSerializer, \
-                            SectorsSerializer,  PlaceSerializer, SpeakersSerializer, OrganizersSerializer, SponsorsSerializer, PartnersSerializer, SocialsSerializer
+                            SectorsSerializer,  PlaceSerializer, SpeakersSerializer, OrganizersSerializer, SponsorsSerializer, PartnersSerializer, PlaceOfficeSerializer, SocialsSerializer
 
 ############   Категория
 class CategoryList(generics.ListAPIView):
@@ -153,6 +153,17 @@ class PartnersListAPIView(ListAPIView):
 class PartnersRetriveAPIView(RetrieveAPIView):
     queryset = Partners.objects.all()
     serializer_class = PartnersSerializer
+    
+######  Локации офис
+class PlaceOfficeListAPIView(ListAPIView):
+    queryset = PlaceOffice.objects.all()
+    serializer_class = PlaceOfficeSerializer
+
+
+class PlaceOfficeRetriveAPIView(RetrieveAPIView):
+    queryset = PlaceOffice.objects.all()
+    serializer_class = PlaceOfficeSerializer
+    
 
 #######   Социальные сети
 class SocialsListAPIView(ListAPIView):

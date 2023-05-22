@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-9=fesu0u-uki!(&8h=1eo(i)_@k^$2a1*ij(&j6gowal*kpa7m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # APPS
     'apps.main_page.apps.MainPageConfig',
+    # APPS_EN
+    'apps_en.main_page_en.apps.MainPageEnConfig',
     # REST
     'rest_framework',
     'django_filters',

@@ -14,6 +14,7 @@ schema_view = get_swagger_view(title='Pastebin API')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.main_page.urls')),
+    path('', include('apps_en.main_page_en.urls')),
 ] 
 
 urlpatterns += doc_urls
