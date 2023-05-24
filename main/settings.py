@@ -28,9 +28,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # APPS
     'apps.main_page.apps.MainPageConfig',
+    'apps.registration.apps.RegistrationConfig',
     # APPS_EN
     'apps_en.main_page_en.apps.MainPageEnConfig',
-    'apps_en.registration.apps.RegistrationConfig',
+    'apps_en.registration_en.apps.RegistrationEnConfig',
     # REST
     'rest_framework',
     'django_filters',
