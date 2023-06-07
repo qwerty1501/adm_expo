@@ -1,5 +1,4 @@
 from django.db import models
-from location_field.models.plain import PlainLocationField
 
 from apps.main_page.services import get_upload_path, validate_file_extension
 
@@ -142,7 +141,7 @@ class Place(models.Model):
         verbose_name_plural = 'Локации'
     
     address = models.CharField(verbose_name='Адрес', max_length=255)
-    location = PlainLocationField(based_fields=['city'], zoom=7)
+    location = models.CharField(verbose_name='Ссылка для локации', max_length=256, blank=True, null=True)
     
     def __str__(self):
         return self.address
@@ -215,7 +214,7 @@ class PlaceOffice(models.Model):
     phone = models.CharField(verbose_name='Номер телефона', max_length=16)
     mail = models.URLField(verbose_name="Почта", blank=True, null=True)
     address = models.CharField(verbose_name='Адрес', max_length=255)
-    location = PlainLocationField(based_fields=['city'], zoom=7)
+    location = models.CharField(verbose_name='Ссылка для локации', max_length=256, blank=True, null=True)
     
     def __str__(self):
         return self.address

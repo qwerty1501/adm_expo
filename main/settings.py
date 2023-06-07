@@ -1,3 +1,4 @@
+import django_heroku
 import os
 from pathlib import Path
 
@@ -27,10 +28,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # APPS
+    'apps.expo_app.apps.ExpoAppConfig',
     'apps.main_page.apps.MainPageConfig',
+    'apps.members.apps.MembersConfig',
     'apps.registration.apps.RegistrationConfig',
     # APPS_EN
+    'apps_en.expo_app_en.apps.ExpoAppEnConfig',
     'apps_en.main_page_en.apps.MainPageEnConfig',
+    'apps_en.members_en.apps.MembersEnConfig',
     'apps_en.registration_en.apps.RegistrationEnConfig',
     # REST
     'rest_framework',
@@ -38,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'rest_framework.authtoken',
     # LIB
-    'location_field.apps.DefaultConfig',
     'corsheaders',
     'drf_yasg',
 ]
@@ -147,3 +151,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())
