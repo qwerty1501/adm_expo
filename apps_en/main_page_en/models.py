@@ -1,5 +1,4 @@
 from django.db import models
-from location_field.models.plain import PlainLocationField
 
 from apps_en.main_page_en.services import get_upload_path, validate_file_extension
 
