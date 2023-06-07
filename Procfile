@@ -1,1 +1,1 @@
-web: gunicorn --worker-tmp-dir /dev/shm main.wsgi
+web: gunicorn main.wsgi --log-file -
