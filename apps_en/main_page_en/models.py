@@ -5,7 +5,7 @@ from apps_en.main_page_en.services import get_upload_path, validate_file_extensi
 
 
 class CategoryEN(models.Model):
-    
+
     class Meta:
         db_table = 'category_en'
         managed = True
@@ -75,8 +75,8 @@ class TargetEN(models.Model):
     
     def __str__(self):
         return self.title
-    
-    
+
+
 class TasksEN(models.Model):
     
     class Meta:
@@ -118,6 +118,23 @@ class VideoEN(models.Model):
         return self.title
     
 
+class ZoneEN(models.Model):
+
+    class Meta:
+        db_table = 'zone_en'
+        verbose_name = 'Zone'
+        verbose_name_plural = 'Zones'
+
+    name = models.CharField(verbose_name="Название", max_length=64)
+    image = models.ImageField(verbose_name="Фотография", upload_to="apps/main_page/images/")
+    title_one = models.CharField(verbose_name="Дни", max_length=64, blank=True, null=True)
+    title_two = models.CharField(verbose_name="Основа", max_length=64, blank=True, null=True)
+    description = models.TextField(verbose_name='Описание', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+    
+
 class SectorsEN(models.Model):
     
     class Meta:
@@ -142,8 +159,8 @@ class PlaceEN(models.Model):
         verbose_name_plural = 'Локации'
     
     address = models.CharField(verbose_name='Адрес', max_length=255)
-    location = PlainLocationField(based_fields=['city'], zoom=7)
-    
+    location = models.CharField(verbose_name='Ссылка для локации', max_length=256, blank=True, null=True)
+
     def __str__(self):
         return self.address
     
@@ -215,7 +232,7 @@ class PlaceOfficeEN(models.Model):
     phone = models.CharField(verbose_name='Номер телефона', max_length=16)
     mail = models.URLField(verbose_name="Почта", blank=True, null=True)
     address = models.CharField(verbose_name='Адрес', max_length=255)
-    location = PlainLocationField(based_fields=['city'], zoom=7)
+    location = models.CharField(verbose_name='Ссылка для локации', max_length=256, blank=True, null=True)
     
     def __str__(self):
         return self.address
@@ -227,7 +244,7 @@ class SocialsEN(models.Model):
         db_table = 'socials_en'
         verbose_name = 'Социальный сеть'
         verbose_name_plural = 'Социальные сети'
-        
+    
     whatsapp = models.URLField(verbose_name="Whatsapp", blank=True, null=True);
     instagram = models.URLField(verbose_name="Instagram", blank=True, null=True);
     facebook = models.URLField(verbose_name="Facebook", blank=True, null=True);

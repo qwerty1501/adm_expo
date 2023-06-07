@@ -26,6 +26,9 @@ urlpatterns = [
     ######  Видео
     path('video_en/', views.VideoENListAPIView.as_view()),
     path('video_en/<int:pk>', views.VideoENRetriveAPIView.as_view()),
+    ######   ZONE
+    path('zone_en/', views.ZoneENListAPIView.as_view()),
+    path('zone_en/<int:pk>', views.ZoneENRetriveAPIView.as_view()),
     ######   Секторы
     path('sectors_en/', views.SectorsENListAPIView.as_view()),
     path('sectors_en/<int:pk>', views.SectorsENListAPIView.as_view()),

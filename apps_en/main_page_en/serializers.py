@@ -1,4 +1,4 @@
-from .models import CategoryEN, PageOneEN, MembersEN, ForumEN, TargetEN, TasksEN, EllipseEN, VideoEN, SectorsEN, PlaceEN, SpeakersEN, OrganizersEN, SponsorsEN, PartnersEN, PlaceOfficeEN, SocialsEN
+from .models import CategoryEN, PageOneEN, MembersEN, ForumEN, TargetEN, TasksEN, EllipseEN, VideoEN, ZoneEN, SectorsEN, PlaceEN, SpeakersEN, OrganizersEN, SponsorsEN, PartnersEN, PlaceOfficeEN, SocialsEN
 from rest_framework import serializers as s
 
 
@@ -63,6 +63,14 @@ class VideoENSerializer(s.ModelSerializer):
     class Meta:
         model = VideoEN
         fields = "__all__"
+
+
+class ZoneENSerializer(s.ModelSerializer):
+
+    class Meta:
+        model = ZoneEN
+        fields = "__all__"
+
 
 class SectorsENSerializer(s.ModelSerializer):
     

@@ -2,8 +2,8 @@ from rest_framework import generics
 from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-from .models import CategoryEN, PageOneEN, MembersEN, ForumEN, TargetEN, TasksEN, EllipseEN, VideoEN, SectorsEN, PlaceEN, SpeakersEN, OrganizersEN, SponsorsEN, PartnersEN, PlaceOfficeEN, SocialsEN
-from .serializers import CategoryENSerializer, PageOneENSerializer, MembersENSerializer, ForumENSerializer, TargetENSerializer, TasksENSerializer, EllipseENSerializer, VideoENSerializer, \
+from .models import CategoryEN, PageOneEN, MembersEN, ForumEN, TargetEN, TasksEN, EllipseEN, VideoEN, ZoneEN, SectorsEN, PlaceEN, SpeakersEN, OrganizersEN, SponsorsEN, PartnersEN, PlaceOfficeEN, SocialsEN
+from .serializers import CategoryENSerializer, PageOneENSerializer, MembersENSerializer, ForumENSerializer, TargetENSerializer, TasksENSerializer, EllipseENSerializer, VideoENSerializer, ZoneENSerializer, \
                             SectorsENSerializer,  PlaceENSerializer, SpeakersENSerializer, OrganizersENSerializer, SponsorsENSerializer, PartnersENSerializer, PlaceOfficeENSerializer, SocialsENSerializer
 
 ############   Категория
@@ -92,6 +92,16 @@ class VideoENListAPIView(ListAPIView):
 class VideoENRetriveAPIView(RetrieveAPIView):
     queryset = VideoEN.objects.all()
     serializer_class = VideoENSerializer
+
+######  ZONE
+class ZoneENListAPIView(ListAPIView):
+    queryset = ZoneEN.objects.all()
+    serializer_class = ZoneENSerializer
+
+
+class ZoneENRetriveAPIView(RetrieveAPIView):
+    queryset = ZoneEN.objects.all()
+    serializer_class = ZoneENSerializer
 
 
 ######   Секторы
