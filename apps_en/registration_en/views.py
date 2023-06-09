@@ -6,10 +6,12 @@ from .models import ApplicationEN
 
 
 class ApplicationENCreateListView(generics.ListCreateAPIView):
-    serializer_class = ApplicationENSerializer
     queryset = ApplicationEN.objects.all()
+    serializer_class = ApplicationENSerializer
+    
     
     
 class ApplicationENDeleteView(generics.DestroyAPIView):
-    serializer_class = ApplicationENSerializer
     queryset = ApplicationEN.objects.all()
+    serializer_class = ApplicationENSerializer
+    

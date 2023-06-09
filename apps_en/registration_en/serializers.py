@@ -1,8 +1,8 @@
-from .models import ApplicationEN
 from rest_framework import serializers as s
 
+from .models import ApplicationEN
 
-class ApplicationENSerializer(s.Serializer):
+class ApplicationENSerializer(s.ModelSerializer):
     
     class Meta:
         model = ApplicationEN

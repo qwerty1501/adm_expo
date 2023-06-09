@@ -2,7 +2,7 @@ from .models import Application
 from rest_framework import serializers as s
 
 
-class ApplicationSerializer(s.Serializer):
+class ApplicationSerializer(s.ModelSerializer):
     
     class Meta:
         model = Application
