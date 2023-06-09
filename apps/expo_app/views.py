@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework import generics
 from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
@@ -36,12 +37,12 @@ class StandRetrieveAPIView(RetrieveAPIView):
     serializer_class = StandSerializer
 
 ####  FEEDBACK
-class FeedbackListAPIView(ListAPIView):
+class FeedbackCreateListView(generics.ListCreateAPIView):
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializer
 
 
-class FeedbackRetrieveAPIView(RetrieveAPIView):
+class FeedbackDeleteView(generics.DestroyAPIView):
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializer
 

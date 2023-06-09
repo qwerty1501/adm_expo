@@ -6,4 +6,5 @@ class ApplicationSerializer(s.Serializer):
     
     class Meta:
         model = Application
-        fields = 'name_organic', 'surname', 'name', 'email', 'number', 'user_status', 'id'
+        fields = '__all__'
+        #  fields = 'name_organic', 'surname', 'name', 'email', 'number', 'user_status', 'id'

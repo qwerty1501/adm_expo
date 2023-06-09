@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import ApplicationCreateListView, ApplicationDeleteView
+from .views import ApplicationENCreateListView, ApplicationENDeleteView
 
 
 urlpatterns = [
     ############   Заявка
-    path('application-en/', ApplicationCreateListView.as_view()),
-    path('application-en/<int:pk>', ApplicationDeleteView.as_view()),
+    path('application-en/', ApplicationENCreateListView.as_view()),
+    path('application-en/<int:pk>', ApplicationENDeleteView.as_view()),
 ]

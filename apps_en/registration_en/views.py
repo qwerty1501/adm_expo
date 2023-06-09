@@ -5,11 +5,11 @@ from .serializers import ApplicationENSerializer
 from .models import ApplicationEN
 
 
-class ApplicationCreateListView(generics.ListCreateAPIView):
+class ApplicationENCreateListView(generics.ListCreateAPIView):
     serializer_class = ApplicationENSerializer
     queryset = ApplicationEN.objects.all()
     
     
-class ApplicationDeleteView(generics.DestroyAPIView):
+class ApplicationENDeleteView(generics.DestroyAPIView):
     serializer_class = ApplicationENSerializer
     queryset = ApplicationEN.objects.all()

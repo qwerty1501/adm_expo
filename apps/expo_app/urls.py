@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import LocationListAPIView, LocationRetrieveAPIView, StandListAPIView, StandRetrieveAPIView, HotelListAPIView, HotelRetrieveAPIView, \
-FeedbackListAPIView, FeedbackRetrieveAPIView, ContactsListAPIView, ContactsRetrieveAPIView
+FeedbackCreateListView, FeedbackDeleteView, ContactsListAPIView, ContactsRetrieveAPIView
 
 urlpatterns = [
     ############   LOCATIONS
@@ -13,8 +13,8 @@ urlpatterns = [
     path('stand/', StandListAPIView.as_view()),
     path('stand/<int:pk>', StandRetrieveAPIView.as_view()),
     ############   Feedback
-    path('feedback/', FeedbackListAPIView.as_view()),
-    path('feedback/<int:pk>', FeedbackRetrieveAPIView.as_view()),
+    path('feedback/', FeedbackCreateListView.as_view()),
+    path('feedback/<int:pk>', FeedbackDeleteView.as_view()),
     ############   Contacts
     path('contacts/', ContactsListAPIView.as_view()),
     path('contacts/<int:pk>', ContactsRetrieveAPIView.as_view()),
