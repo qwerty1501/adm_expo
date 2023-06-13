@@ -17,6 +17,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+AUTH_USER_MODEL = "users.User"
+
+SECRET_ADMIN_KEY = '12345';
+
+DEFAULT_PASSWORD = '123456';
 
 # Application definition
 
@@ -32,6 +37,7 @@ INSTALLED_APPS = [
     'apps.main_page.apps.MainPageConfig',
     'apps.members.apps.MembersConfig',
     'apps.registration.apps.RegistrationConfig',
+    'apps.users.apps.UsersConfig',
     # APPS_EN
     'apps_en.expo_app_en.apps.ExpoAppEnConfig',
     'apps_en.main_page_en.apps.MainPageEnConfig',
@@ -121,6 +127,15 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+#   EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'malovu01@mail.ru'
+EMAIL_HOST_PASSWORD = 'MercedesS63s'
 
 
 #   LOCATION GOOGLE 

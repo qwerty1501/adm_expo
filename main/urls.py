@@ -18,6 +18,7 @@ urlpatterns = [
     path('', include('apps.main_page.urls')),
     path('', include('apps.members.urls')),
     path('', include('apps.registration.urls')),
+    path('', include('apps.users.urls')),
     # English
     path('', include('apps_en.expo_app_en.urls')),
     path('', include('apps_en.main_page_en.urls')),
