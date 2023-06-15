@@ -43,7 +43,7 @@ class User(AbstractUser):
     is_superuser = models.BooleanField(default=False, verbose_name="СуперАдмин?");
 
     name = models.CharField(max_length=300, verbose_name="Ф.И.О", **parametersForNull);
-    workEmail = models.EmailField(verbose_name="Email", default=None, unique=True, **parametersForNull);
+    workemail = models.EmailField(verbose_name="Email", default=None, unique=True, **parametersForNull);
     country = models.CharField(max_length=300, verbose_name="Страна", **parametersForNull);
     city = models.CharField(max_length=300, verbose_name="Город", **parametersForNull);
     birth = models.CharField(max_length=300, verbose_name="Дата рождения", **parametersForNull);
@@ -59,8 +59,8 @@ class User(AbstractUser):
     participation = models.BooleanField(verbose_name="Участие на HIT EXPO", default=False)
     projects = models.BooleanField(verbose_name="Поиске проектов", default=False)
     other_one = models.BooleanField(verbose_name="Другое", default=False)
-    ########  Как вы узнали о мероприятие?   ########
-    instagram = models.BooleanField(verbose_name="Инстаграм", default=False)
+    ########  Как вы узнали о мероприятие?   #########
+    instagram_bool = models.BooleanField(verbose_name="Инстаграм", default=False)
     tv_radio = models.BooleanField(verbose_name="ТВ, Радио", default=False)
     news_portals = models.BooleanField(verbose_name="Новостные порталы", default=False)
     other_two = models.BooleanField(verbose_name="Другое", default=False)
