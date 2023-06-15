@@ -65,16 +65,92 @@ class User(AbstractUser):
     news_portals = models.BooleanField(verbose_name="Новостные порталы", default=False)
     other_two = models.BooleanField(verbose_name="Другое", default=False)
     
-    mass_media = models.ForeignKey("MassMedia", verbose_name="СМИ", on_delete=models.CASCADE, **parametersForNull)
-    participant = models.ForeignKey("Participant", verbose_name="СМИ", on_delete=models.CASCADE, **parametersForNull)
+    participant_sector = models.CharField(max_length=300, verbose_name="В качестве кого вы хотите посетить HIT EXPO ?", **parametersForNull);
     
-    position = models.CharField(max_length=300, verbose_name="Должность", **parametersForNull);
+    position_main = models.CharField(max_length=300, verbose_name="Должность", **parametersForNull);
     email = models.EmailField(verbose_name="Электронная почта", default=None, unique=True, **parametersForNull);
     password = models.CharField(max_length=128, verbose_name="Пароль", default=make_password(settings.DEFAULT_PASSWORD));
 
     avatarHidden = models.BooleanField(default=True)
-    # bg = models.ImageField(verbose_name="Задний фон", upload_to=bgRename.rename, **parametersForNull);
+                
+    #########################################        СМИ       #########################################
+        
+    image_certificate_smi = models.ImageField(verbose_name="Загрузите вашего журналистского удостоверения в  png или jpg", upload_to='images/certificate-smi', **parametersForNull);
+    image_logo = models.ImageField(verbose_name="Загрузите логотип компании в png или jpg", upload_to='images/logo-smi', **parametersForNull);
+    
+    organization_smi = models.CharField(max_length=300, verbose_name="Полное юридическое наименование организации", **parametersForNull);
+    address = models.CharField(max_length=300, verbose_name="Юридический адрес", **parametersForNull);
+    web_site = models.URLField(verbose_name="Веб-сайт", **parametersForNull);
+    work_phone = models.CharField(max_length=300, verbose_name="Рабочий телефон", **parametersForNull);
+    email_smi = models.EmailField(max_length=300, verbose_name="Email", default=None, unique=True, **parametersForNull);
+    
+    smi_team = models.CharField(max_length=300, verbose_name="Сколько у вас человек в команде?", **parametersForNull);
+    
+    
+    #############################################       Участник           ##########################################
 
+    participation_sector = models.CharField(max_length=300, verbose_name="Выберите сектор участия (с условиями участия каждого сектора можно ознакомится)", **parametersForNull);
+    trade = models.CharField(max_length=300, verbose_name="Выберите отрасль", **parametersForNull);
+        
+    brand = models.CharField(max_length=300, verbose_name="Наименование бренда", **parametersForNull);
+    organization_participant = models.CharField(max_length=300, verbose_name="Полное юридическое наименование организации", **parametersForNull);
+    
+    inn = models.CharField(max_length=300, verbose_name="ИНН", **parametersForNull);
+    p_c = models.CharField(max_length=300, verbose_name="Р/С", **parametersForNull);
+    bik = models.CharField(max_length=300, verbose_name="БИК", **parametersForNull);
+    okpo = models.CharField(max_length=300, verbose_name="ОКПО", **parametersForNull);
+    
+    pdf_file = models.FileField(verbose_name="Загрузите свидетельство регистрации в pdf", upload_to='file/register', **parametersForNull)
+    name_manager = models.CharField(max_length=300, verbose_name="Ф.И.О руководителя", **parametersForNull);
+    position_participant = models.CharField(max_length=300, verbose_name="Должность (Участник)", **parametersForNull);
+    company = models.CharField(max_length=300, verbose_name="Деятельность компании", **parametersForNull);
+    description = models.TextField(verbose_name="Описание", **parametersForNull);
+
+
+    email_participant = models.EmailField(max_length=300, verbose_name="Email", default=None, unique=True, **parametersForNull);
+    
+    
+    ###############################################         Контактные лица          #########################################
+
+    name_contact_person = models.CharField(max_length=300, verbose_name="Ф.И.О (контактным лицом)", **parametersForNull);
+    position_contact_person = models.CharField(max_length=300, verbose_name="Должность (контактным лицом)", **parametersForNull);
+    phone_contact_person = models.CharField(max_length=300, verbose_name="Телефон (контактным лицом)", **parametersForNull);
+    whatsapp_contact_person = models.CharField(max_length=300, verbose_name="WhatsApp (контактным лицом)", **parametersForNull);
+
+    # socials
+    instagram = models.URLField(verbose_name="Instagram", **parametersForNull);
+    facebook = models.URLField(verbose_name="Facebook", **parametersForNull);
+    twitter = models.URLField(verbose_name="Twitter", **parametersForNull);
+    
+    #####################################   Investment    #################################
+    
+    agricultural_production = models.BooleanField(verbose_name="Производство + сельхоз", default=False)
+    construction = models.BooleanField(verbose_name="Строительство", default=False)
+    technique = models.BooleanField(verbose_name="Строительство + техника", default=False)
+    textiles = models.BooleanField(verbose_name="Текстиль, обувь и аксессуары", default=False)
+    education = models.BooleanField(verbose_name="Образование", default=False)
+    medicine = models.BooleanField(verbose_name="Медицина", default=False)
+    tourism = models.BooleanField(verbose_name="Туризм", default=False)
+    echo = models.BooleanField(verbose_name="Эко", default=False)
+    it = models.BooleanField(verbose_name="IT", default=False)
+    banks = models.BooleanField(verbose_name="Банки", default=False)
+    kfx = models.BooleanField(verbose_name="КФХ", default=False)
+    krc = models.BooleanField(verbose_name="КРС", default=False)
+    machinery = models.BooleanField(verbose_name="Машиностроение", default=False)
+    industry = models.BooleanField(verbose_name="Текстильное промышленность", default=False)
+    
+    
+    #####################################################################
+    
+    choose_direction_fashion = models.CharField(max_length=300, verbose_name="Выберите направление (Fashion)", **parametersForNull);
+    choose_direction_food = models.CharField(max_length=300, verbose_name="Выберите направление (Food)", **parametersForNull);
+    choose_direction_expert = models.CharField(max_length=300, verbose_name="Эксперт", **parametersForNull);
+    
+    status = models.CharField(max_length=300, verbose_name="Статус", **parametersForNull);
+    manager = models.CharField(max_length=300, verbose_name="Менеджер", **parametersForNull);
+    referal = models.CharField(max_length=300, verbose_name="Реферал", **parametersForNull);
+    
+    ####################################.       PASSWORD    #################################
     uniqueId = models.UUIDField(unique=True, verbose_name="Уникальный id", **parametersForNull);
 
     resetPasswordUUID = models.UUIDField(verbose_name="Ссылка для восстановления пароля", **parametersForNull);
@@ -91,106 +167,3 @@ class User(AbstractUser):
         if not self.id:
             self.uniqueId = uuid.uuid4()
         super(User, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
-        
-        
-class MassMedia(models.Model):
-    
-    class Meta:
-        db_table = 'mass_media'
-        verbose_name = 'ModelName'
-        verbose_name_plural = 'ModelNames'
-        
-    image_certificate_smi = models.ImageField(verbose_name="Загрузите вашего журналистского удостоверения в  png или jpg", upload_to='images/certificate-smi', **parametersForNull);
-    image_logo_smi = models.ImageField(verbose_name="Загрузите логотип компании в png или jpg", upload_to='images/logo-smi', **parametersForNull);
-    organization_smi = models.CharField(max_length=300, verbose_name="Полное юридическое наименование организации", **parametersForNull);
-    address_smi = models.CharField(max_length=300, verbose_name="Юридический адрес", **parametersForNull);
-    web_site = models.URLField(verbose_name="Веб-сайт", **parametersForNull);
-    work_phone_smi = models.CharField(max_length=300, verbose_name="Рабочий телефон", **parametersForNull);
-    email_smi = models.EmailField(max_length=300, verbose_name="Email", default=None, unique=True, **parametersForNull);
-    # socials
-    instagram = models.URLField(verbose_name="Instagram", **parametersForNull);
-    facebook = models.URLField(verbose_name="Facebook", **parametersForNull);
-    twitter = models.URLField(verbose_name="Twitter", **parametersForNull);
-    
-    smi_team = models.CharField(max_length=300, verbose_name="Сколько у вас человек в команде?", **parametersForNull);
-    
-    def __str__(self):
-        return self.name
-        # return f'{self.name}'
-    
-
-class Participant(models.Model):
-    
-    class Meta:
-        db_table = 'participant'
-        verbose_name = 'Участник'
-        verbose_name_plural = 'Участники'
-        
-    participation_sector = models.ForeignKey("ParticipationSector", verbose_name='Выберите сектор участия (с условиями участия каждого сектора можно ознакомится)', on_delete=models.CASCADE, **parametersForNull)
-    industry = models.ForeignKey("Industry", verbose_name='Выберите отрасль', on_delete=models.CASCADE, **parametersForNull)
-    brand = models.CharField(max_length=300, verbose_name="Наименование бренда", **parametersForNull);
-    image_logo_participant = models.ImageField(verbose_name="Загрузите логотип компании в png или jpg", upload_to='images/participant', **parametersForNull);
-    organization_participant = models.CharField(max_length=300, verbose_name="Полное юридическое наименование организации", **parametersForNull);
-    address_participant = models.CharField(max_length=300, verbose_name="Юридический адрес", **parametersForNull);
-    
-    inn = models.CharField(max_length=300, verbose_name="ИНН", **parametersForNull);
-    p_c = models.CharField(max_length=300, verbose_name="Р/С", **parametersForNull);
-    bik = models.CharField(max_length=300, verbose_name="БИК", **parametersForNull);
-    okpo = models.CharField(max_length=300, verbose_name="ОКПО", **parametersForNull);
-    
-    pdf_file = models.FileField(verbose_name="Загрузите свидетельство регистрации в pdf", upload_to='file/register', **parametersForNull)
-    name = models.CharField(max_length=300, verbose_name="Ф.И.О руководителя", **parametersForNull);
-    position = models.CharField(max_length=300, verbose_name="Должность", **parametersForNull);
-    company = models.CharField(max_length=300, verbose_name="Деятельность компании", **parametersForNull);
-    description = models.TextField(verbose_name="Описание", **parametersForNull);
-    web_site = models.URLField(verbose_name="Веб-сайт", **parametersForNull);
-    work_phone_smi = models.CharField(max_length=300, verbose_name="Рабочий телефон", **parametersForNull);
-    email_participant = models.EmailField(max_length=300, verbose_name="Email", default=None, unique=True, **parametersForNull);
-    # socials
-    instagram = models.URLField(verbose_name="Instagram", **parametersForNull);
-    facebook = models.URLField(verbose_name="Facebook", **parametersForNull);
-    twitter = models.URLField(verbose_name="Twitter", **parametersForNull);
-    
-    dop_participant = models.ForeignKey("DopParticipant", verbose_name='Выберите отрасль', on_delete=models.CASCADE, **parametersForNull)
-    
-    
-class ParticipationSector(models.Model):
-    
-    class Meta:
-        db_table = 'participation_sector'
-        verbose_name = 'Выберите сектор участия'
-        verbose_name_plural = 'Выберите сектор участии'
-        
-    name = models.CharField(max_length=300, verbose_name="Наименование сектора");
-    
-    def __str__(self):
-        return self.name
-    
-    
-class Industry(models.Model):
-    
-    class Meta:
-        db_table = 'industry'
-        verbose_name = 'Отрасль'
-        verbose_name_plural = 'Отрасль'
-        
-    name = models.CharField(max_length=300, verbose_name="Наименование отраслей");
-    
-    def __str__(self):
-        return self.name
-    
-    
-class DopParticipant(models.Model):
-    
-    class Meta:
-        db_table = 'dop_participant'
-        verbose_name = 'Контактные лица'
-        verbose_name_plural = 'Контактные лица'
-        
-    name = models.CharField(max_length=300, verbose_name="Ф.И.О", **parametersForNull);
-    position = models.CharField(max_length=300, verbose_name="Должность", **parametersForNull);
-    phone = models.CharField(max_length=300, verbose_name="Телефон", **parametersForNull);
-    whatsapp_phone = models.CharField(max_length=300, verbose_name="WhatsApp", **parametersForNull);
-    
-    def __str__(self):
-        return self.name
