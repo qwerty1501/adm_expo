@@ -43,7 +43,7 @@ class User(AbstractUser):
     is_superuser = models.BooleanField(default=False, verbose_name="СуперАдмин?");
 
     name = models.CharField(max_length=300, verbose_name="Ф.И.О", **parametersForNull);
-    workemail = models.EmailField(verbose_name="Email", default=None, unique=True, **parametersForNull);
+    workEmail = models.EmailField(verbose_name="Email", default=None, unique=True, **parametersForNull);
     country = models.CharField(max_length=300, verbose_name="Страна", **parametersForNull);
     city = models.CharField(max_length=300, verbose_name="Город", **parametersForNull);
     birth = models.CharField(max_length=300, verbose_name="Дата рождения", **parametersForNull);
