@@ -61,7 +61,17 @@ class UserMVS(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True);
         serializer.save();
         return Response(serializer.data);
-
+    
+    
+class RegisterCreateListView(generics.ListCreateAPIView):
+    queryset = User.objects.all();
+    serializer_class = UserSerializer
+    
+    
+class RegisterDeleteView(generics.DestroyAPIView):
+    queryset = User.objects.all();
+    serializer_class = UserSerializer
+    
 
 class UserLoginView(generics.CreateAPIView):
     queryset = User.objects.all();
