@@ -28,7 +28,7 @@ useSingle3 = {
 }
 
 urlpatterns = [
-    path('', UserMVS.as_view(userPlural)),
+    path('registration/', UserMVS.as_view(userPlural)),
     path('<uuid:uniqueId>/', UserMVS.as_view(useSingle)),
 
     path('login/', UserLoginView.as_view()),
