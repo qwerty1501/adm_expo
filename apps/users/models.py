@@ -80,7 +80,7 @@ class User(AbstractUser):
     
     organization_smi = models.CharField(max_length=300, verbose_name="Полное юридическое наименование организации", **parametersForNull);
     address = models.CharField(max_length=300, verbose_name="Юридический адрес", **parametersForNull);
-    web_site = models.URLField(verbose_name="Веб-сайт", **parametersForNull);
+    web_site = models.CharField(verbose_name="Укажите url Веб-сайта", max_length=300, **parametersForNull);
     work_phone = models.CharField(max_length=300, verbose_name="Рабочий телефон", **parametersForNull);
     email_smi = models.EmailField(max_length=300, verbose_name="Email", default=None, unique=True, **parametersForNull);
     
@@ -118,9 +118,9 @@ class User(AbstractUser):
     whatsapp_contact_person = models.CharField(max_length=300, verbose_name="WhatsApp (контактным лицом)", **parametersForNull);
 
     # socials
-    instagram = models.URLField(verbose_name="Instagram", **parametersForNull);
-    facebook = models.URLField(verbose_name="Facebook", **parametersForNull);
-    twitter = models.URLField(verbose_name="Twitter", **parametersForNull);
+    instagram = models.CharField(verbose_name="Укажите url Instagram", max_length=300, **parametersForNull);
+    facebook = models.CharField(verbose_name="Укажите url Facebook", max_length=300, **parametersForNull);
+    twitter = models.CharField(verbose_name="Укажите url Twitter", max_length=300, **parametersForNull);
     
     #####################################   Investment    #################################
     
