@@ -54,12 +54,16 @@ class User(AbstractUser):
     
     workPhone = models.CharField(max_length=300, verbose_name="Телефон", **parametersForNull);
     personalPhone = models.CharField(max_length=300, verbose_name="WhatsApp", **parametersForNull);
+    
     ####### Я заинтересован в #########
+
     visit = models.BooleanField(verbose_name="Посещение на HIT EXPO", default=False)
     participation = models.BooleanField(verbose_name="Участие на HIT EXPO", default=False)
     projects = models.BooleanField(verbose_name="Поиске проектов", default=False)
     other_one = models.BooleanField(verbose_name="Другое", default=False)
+
     ########  Как вы узнали о мероприятие?   #########
+
     instagram_bool = models.BooleanField(verbose_name="Инстаграм", default=False)
     tv_radio = models.BooleanField(verbose_name="ТВ, Радио", default=False)
     news_portals = models.BooleanField(verbose_name="Новостные порталы", default=False)
@@ -70,6 +74,8 @@ class User(AbstractUser):
     position_main = models.CharField(max_length=300, verbose_name="Должность", **parametersForNull);
     email = models.EmailField(verbose_name="Электронная почта", default=None, unique=True, **parametersForNull);
     password = models.CharField(max_length=128, verbose_name="Пароль", default=make_password(settings.DEFAULT_PASSWORD));
+
+    password_user = models.CharField(max_length=128, verbose_name="Пароль")
 
     avatarHidden = models.BooleanField(default=True)
                 

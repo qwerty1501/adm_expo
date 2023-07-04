@@ -21,7 +21,7 @@ class StandSerializer(s.ModelSerializer):
 
     class Meta:
         model = Stand
-        fields = 'status', 'square', 'description', 'price', 'id',
+        fields = 'status', 'square', 'description', 'price', 'id'
 
 
 class FeedbackSerializer(s.ModelSerializer):

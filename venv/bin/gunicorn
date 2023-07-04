@@ -1,4 +1,4 @@
-#!/Users/mac/Desktop/adm_expo/venv/bin/python3
+#!/Users/admin/Desktop/adm_expo/venv/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
