@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_swagger',
     'rest_framework.authtoken',
+    'knox',
     # LIB
     'corsheaders',
     'drf_yasg',
@@ -93,6 +94,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
 }
 
 

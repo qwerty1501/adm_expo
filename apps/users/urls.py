@@ -1,9 +1,8 @@
 from django.urls import path
-from rest_framework_simplejwt.views import TokenRefreshView
 
-from apps.users.views import UserMVS, RegisterCreateListView, RegisterDeleteView, UserLoginView, ResetPasswordMVS, \
-            CustomTokenRefreshView, ShowHideAvatarView, SendMailAPIView, SendMailUserApiView
+from apps.users.views import UserMVS, RegisterCreateListView, RegisterDeleteView, CustomTokenRefreshView
 
+from . import views
 
 userPlural = {
     'get': 'list',
@@ -34,13 +33,9 @@ urlpatterns = [
     path('registration/', RegisterCreateListView.as_view()),
     path('registration/<int:pk>', RegisterDeleteView.as_view()),
 
-    path('login/', UserLoginView.as_view()),
     path('check/', CustomTokenRefreshView.as_view()),
-    path('refresh/', TokenRefreshView.as_view()),
 
-    path('reset-password/', ResetPasswordMVS.as_view({'post': 'create'})),
-    path('reset-password/<uuid:resetPasswordUUID>/', ResetPasswordMVS.as_view({'get': 'retrieve', 'patch': 'update'})),
-    path('send-mail-message/',  SendMailAPIView.as_view()),
-    path('send-mail-order/', SendMailUserApiView.as_view()),
-    path('avatar-flip/<uuid:uniqueId>/', ShowHideAvatarView.as_view()),
+    # path('api/login/', LoginAPI.as_view(), name='login'),
+    # path('api/logout/', knox_views.LogoutView.as_view(), name='logout'),
+    # path('api/logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
 ]

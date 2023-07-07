@@ -54,6 +54,8 @@ class User(AbstractUser):
     
     workPhone = models.CharField(max_length=300, verbose_name="Телефон", **parametersForNull);
     personalPhone = models.CharField(max_length=300, verbose_name="WhatsApp", **parametersForNull);
+
+    gos_organization = models.CharField(max_length=300, verbose_name="Организация", **parametersForNull);
     
     ####### Я заинтересован в #########
 
@@ -66,8 +68,27 @@ class User(AbstractUser):
 
     instagram_bool = models.BooleanField(verbose_name="Инстаграм", default=False)
     tv_radio = models.BooleanField(verbose_name="ТВ, Радио", default=False)
-    news_portals = models.BooleanField(verbose_name="Новостные порталы", default=False)
+    invite_mail = models.BooleanField(verbose_name="Приглашение от организаторов по почте", default=False)
+    invite_fair = models.BooleanField(verbose_name="Приглашение от экспонента выставки", default=False)
+    invite_minister = models.BooleanField(verbose_name="Приглашение от Министерства / ведомства", default=False)
+    message = models.BooleanField(verbose_name="Сообщение по тел/факсу от организаторов", default=False)
+    ad_city = models.BooleanField(verbose_name="Наружная реклама в городе", default=False)
     other_two = models.BooleanField(verbose_name="Другое", default=False)
+
+    ################  Какие преимущества и возможности предоставляете?     ###################
+
+    benefits_one = models.BooleanField(verbose_name="Присутствие инвесторов", default=False)
+    benefits_two = models.BooleanField(verbose_name="Присутствие государственных органов", default=False)
+    benefits_three = models.BooleanField(verbose_name="Выход на мировой рынок", default=False)
+    benefits_for = models.BooleanField(verbose_name="Реализация продукции", default=False)
+    benefits_five = models.BooleanField(verbose_name="Возможность получения инвестиции", default=False)
+    benefits_six = models.BooleanField(verbose_name="Расширение бизнеса", default=False)
+    benefits_seven = models.BooleanField(verbose_name="Коммуникация с другми участниками", default=False)
+    benefits_eight = models.BooleanField(verbose_name="Программа", default=False)
+    benefits_nine = models.BooleanField(verbose_name="Место и формат проведения", default=False)
+    benefits_ten = models.BooleanField(verbose_name="Возможность получения номинации", default=False)
+
+    ##########################################################################################
     
     participant_sector = models.CharField(max_length=300, verbose_name="В качестве кого вы хотите посетить HIT EXPO ?", **parametersForNull);
     
@@ -77,7 +98,6 @@ class User(AbstractUser):
 
     password_user = models.CharField(max_length=128, verbose_name="Пароль")
 
-    avatarHidden = models.BooleanField(default=True)
                 
     #########################################        СМИ       #########################################
         

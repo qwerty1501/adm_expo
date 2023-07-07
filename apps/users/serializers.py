@@ -29,6 +29,7 @@ class UserCRUDSerializer(serializers.ModelSerializer):
     
     
 class UserSerializer(serializers.ModelSerializer):
+    is_authenticated = serializers.CharField(max_length=400, required=False)
 
     class Meta:
         model = User
@@ -48,26 +49,8 @@ class CustomTokenRefreshSerializer(TokenRefreshSerializer):
         return data
 
 
-class SendMailSerializer(serializers.Serializer):
-    first_name = serializers.CharField(max_length=55)
-    last_name = serializers.CharField(max_length=55)
-    email = serializers.EmailField(max_length=55)
-    message = serializers.CharField()
+class LoginSerializer(serializers.ModelSerializer):
 
-
-class SendMessageSerializer(serializers.Serializer):
-    first_name = serializers.CharField(max_length=55)
-    last_name = serializers.CharField(max_length=55)
-    mobile = serializers.CharField(max_length=55)
-    email = serializers.EmailField(max_length=55)
-    city = serializers.CharField(max_length=55)
-    street = serializers.CharField(max_length=55)
-    building_name = serializers.CharField(max_length=55)
-    unit = serializers.CharField(max_length=55)
-    description = serializers.CharField()
-
-
-class UserAvatarFlipSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['avatarHidden']
+        fields = ['email', 'password_user', 'id']
