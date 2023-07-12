@@ -28,7 +28,7 @@ class UserCRUDSerializer(serializers.ModelSerializer):
         return instance;
     
     
-class UserSerializer(serializers.ModelSerializer):
+class UserApiSerializer(serializers.ModelSerializer):
     is_authenticated = serializers.CharField(max_length=400, required=False)
 
     class Meta:
@@ -44,13 +44,12 @@ class CustomTokenRefreshSerializer(TokenRefreshSerializer):
         user = User.objects.get(id=user_id);
         data.update({
             'profile':
-            UserSerializer(user, context={'request': self.context['request']}).data
+            UserApiSerializer(user, context={'request': self.context['request']}).data
         });
         return data
 
 
-class LoginSerializer(serializers.ModelSerializer):
-
+class UserLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['email', 'password_user', 'id']
+        fields = ('id',)
