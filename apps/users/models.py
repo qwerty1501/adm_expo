@@ -94,6 +94,22 @@ class User(AbstractUser):
     projects = models.BooleanField(verbose_name="Поиске проектов", default=False)
     other_one = models.BooleanField(verbose_name="Другое", default=False)
 
+
+    ##########################      Ваши цели посещение HIT Expo?      SMI      ###############################
+
+    smi_bool_one = models.BooleanField(verbose_name="Стать частью информационной поддержки", default=False)
+    smi_bool_two = models.BooleanField(verbose_name="Знакомство с новыми компаниями", default=False)
+    smi_bool_three = models.BooleanField(verbose_name="Освещение и полезная информация", default=False)
+    smi_bool_four = models.BooleanField(verbose_name="Участие на пресс-конференции", default=False)
+
+
+    ##########################      Что вас заинтересовала в нашей выставке?:    GOS     ###############################
+
+    gos_bool_one = models.BooleanField(verbose_name="Присутствие инвесторов", default=False)
+    gos_bool_two = models.BooleanField(verbose_name="Потенциал выставки", default=False)
+    gos_bool_three = models.BooleanField(verbose_name="Развитие экономики Кыргызстана", default=False)
+    gos_bool_four = models.BooleanField(verbose_name="Инвестиционные проекты", default=False)
+
     ########  Как вы узнали о мероприятие?   #########
 
     whatsapp_bool = models.BooleanField(verbose_name="Whats App", default=False)
