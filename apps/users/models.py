@@ -151,6 +151,7 @@ class User(AbstractUser):
         
     brand = models.CharField(max_length=300, verbose_name="Наименование бренда", **parametersForNull);
     organization_participant = models.CharField(max_length=300, verbose_name="Полное юридическое наименование организации", **parametersForNull);
+    name_bank = models.CharField(max_length=300, verbose_name="Наименование банка", **parametersForNull);
     
     inn = models.CharField(max_length=300, verbose_name="ИИН/ИНН(Серия патента компании)", **parametersForNull);
     orgn = models.CharField(max_length=300, verbose_name="ОГРН(Номер патента)", **parametersForNull);
