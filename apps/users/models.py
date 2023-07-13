@@ -96,8 +96,11 @@ class User(AbstractUser):
 
     ########  Как вы узнали о мероприятие?   #########
 
+    whatsapp_bool = models.BooleanField(verbose_name="Whats App", default=False)
+    telegram_bool = models.BooleanField(verbose_name="Telegram", default=False)
+    radio_bool = models.BooleanField(verbose_name="Радио", default=False)
+    tv_bool = models.BooleanField(verbose_name="ТВ", default=False)
     instagram_bool = models.BooleanField(verbose_name="Инстаграм", default=False)
-    tv_radio = models.BooleanField(verbose_name="ТВ, Радио", default=False)
     invite_mail = models.BooleanField(verbose_name="Приглашение от организаторов по почте", default=False)
     invite_fair = models.BooleanField(verbose_name="Приглашение от экспонента выставки", default=False)
     invite_minister = models.BooleanField(verbose_name="Приглашение от Министерства / ведомства", default=False)
