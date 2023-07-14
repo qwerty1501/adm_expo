@@ -1,9 +1,7 @@
 from django.urls import path
 from knox import views as knox_views
 
-from apps.users.views import UserMVS, RegisterCreateListView, RegisterDeleteView, CustomTokenRefreshView, LoginAPI
-
-from . import views
+from apps.users.views import UserMVS, CustomTokenRefreshView, LoginAPI
 
 userPlural = {
     'get': 'list',
@@ -30,9 +28,7 @@ useSingle3 = {
 urlpatterns = [
     path('user/', UserMVS.as_view(userPlural)),
     path('user/<uuid:uniqueId>/', UserMVS.as_view(useSingle)),
-    
-    path('registration/', RegisterCreateListView.as_view()),
-    path('registration/<int:pk>', RegisterDeleteView.as_view()),
+
 
     path('check/', CustomTokenRefreshView.as_view()),
 

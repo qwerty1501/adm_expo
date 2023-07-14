@@ -1,19 +1,13 @@
-from django.conf import settings
 from django.contrib.auth import login
-
-from rest_framework import viewsets, permissions, status, generics
+from knox.views import LoginView as KnoxLoginView
+from rest_framework import viewsets, permissions, status
+from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.response import Response
-from rest_framework.exceptions import ValidationError
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from rest_framework.authtoken.serializers import AuthTokenSerializer
-from knox.views import LoginView as KnoxLoginView
-
 from apps.users.models import User
-from .services import generateError, generateAuthInfo
 from apps.users.serializers import (
-    UserCRUDSerializer, UserAPISerializer,
-    CustomTokenRefreshSerializer, UserLoginSerializer
+    UserCRUDSerializer, CustomTokenRefreshSerializer
 )
 
 
@@ -29,39 +23,34 @@ class MVSDynamicPermission(permissions.BasePermission):
 
 
 class UserMVS(viewsets.ModelViewSet):
-    queryset = User.objects.all();
+    queryset = User.objects.all()
     permission_classes = [MVSDynamicPermission]
     lookup_field = 'uniqueId'
-    serializer_class = UserAPISerializer
+    serializer_class = UserCRUDSerializer
 
-    def create(self, request):
-        secretAdminKey = request.data.get('secretAdminKey');
-        if secretAdminKey == settings.SECRET_ADMIN_KEY:
-            serializer = UserCRUDSerializer(data={'password': settings.DEFAULT_PASSWORD}, context={'request': request});
-            serializer.is_valid(raise_exception=True);
-            serializer.save();
-            return Response(data=f"{settings.CLIENT_URL}/user/{serializer.data['uniqueId']}");
-        return Response(status=status.HTTP_403_FORBIDDEN);
+    def create(self, request, *args, **kwargs):
+        # secretAdminKey = request.data.get('secretAdminKey')
+        # if secretAdminKey == settings.SECRET_ADMIN_KEY:
+        #     serializer = UserCRUDSerializer(data={'password': settings.DEFAULT_PASSWORD}, context={'request': request})
+        #     serializer.is_valid(raise_exception=True)
+        #     serializer.save()
+        #     return Response(data=f"{settings.CLIENT_URL}/user/{serializer.data['uniqueId']}")
+        # return Response(status=status.HTTP_403_FORBIDDEN)
+        serializer = self.serializer_class(
+            data=request.data, context={'request': request}
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, *args, **kwargs):
-        user = request.user;
-        data = request.data.dict();
-        serializer = UserCRUDSerializer(user, data=data, context={'request': request});
-        serializer.is_valid(raise_exception=True);
-        serializer.save();
-        return Response(serializer.data);
+        user = request.user
+        data = request.data.dict()
+        serializer = UserCRUDSerializer(user, data=data, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
     
-    
-class RegisterCreateListView(generics.ListCreateAPIView):
-    queryset = User.objects.all();
-    serializer_class = UserAPISerializer
-    
-    
-class RegisterDeleteView(generics.DestroyAPIView):
-    queryset = User.objects.all();
-    serializer_class = UserAPISerializer
-    
-
 
 class CustomTokenRefreshView(TokenRefreshView):
     serializer_class = CustomTokenRefreshSerializer
