@@ -12,7 +12,7 @@ from knox.views import LoginView as KnoxLoginView
 from apps.users.models import User
 from .services import generateError, generateAuthInfo
 from apps.users.serializers import (
-    UserCRUDSerializer, UserApiSerializer,
+    UserCRUDSerializer, UserAPISerializer,
     CustomTokenRefreshSerializer, UserLoginSerializer
 )
 
@@ -32,7 +32,7 @@ class UserMVS(viewsets.ModelViewSet):
     queryset = User.objects.all();
     permission_classes = [MVSDynamicPermission]
     lookup_field = 'uniqueId'
-    serializer_class = UserApiSerializer
+    serializer_class = UserAPISerializer
 
     def create(self, request):
         secretAdminKey = request.data.get('secretAdminKey');
@@ -54,12 +54,12 @@ class UserMVS(viewsets.ModelViewSet):
     
 class RegisterCreateListView(generics.ListCreateAPIView):
     queryset = User.objects.all();
-    serializer_class = UserApiSerializer
+    serializer_class = UserAPISerializer
     
     
 class RegisterDeleteView(generics.DestroyAPIView):
     queryset = User.objects.all();
-    serializer_class = UserApiSerializer
+    serializer_class = UserAPISerializer
     
 
 

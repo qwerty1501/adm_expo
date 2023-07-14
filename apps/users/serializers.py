@@ -3,6 +3,8 @@ from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from rest_framework_simplejwt.state import token_backend
 from apps.users.models import User
 
+from djoser.serializers import UserSerializer
+
 
 class UserCRUDSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=400, required=False)
@@ -27,13 +29,14 @@ class UserCRUDSerializer(serializers.ModelSerializer):
         instance.save();
         return instance;
     
-    
-class UserApiSerializer(serializers.ModelSerializer):
+
+class UserAPISerializer(serializers.ModelSerializer):
+
     is_authenticated = serializers.CharField(max_length=400, required=False)
 
     class Meta:
         model = User
-        exclude = ['password', 'groups', 'user_permissions', 'resetPasswordUUID', 'resetPasswordDate']
+        exclude = ['groups', 'user_permissions', 'resetPasswordUUID', 'resetPasswordDate']
 
 
 class CustomTokenRefreshSerializer(TokenRefreshSerializer):
@@ -44,7 +47,7 @@ class CustomTokenRefreshSerializer(TokenRefreshSerializer):
         user = User.objects.get(id=user_id);
         data.update({
             'profile':
-            UserApiSerializer(user, context={'request': self.context['request']}).data
+            UserSerializer(user, context={'request': self.context['request']}).data
         });
         return data
 

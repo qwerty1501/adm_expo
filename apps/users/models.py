@@ -9,6 +9,7 @@ from apps.users.managers import CustomManager
 from django.db import models
 
 
+
 parametersForNull = {
     'null': True,
     'blank': True,
@@ -143,10 +144,7 @@ class User(AbstractUser):
     
     position_main = models.CharField(max_length=300, verbose_name="Должность", **parametersForNull);
     email = models.EmailField(verbose_name="Электронная почта", default=None, unique=True, **parametersForNull);
-    password = models.CharField(max_length=128, verbose_name="Пароль", default=make_password(settings.DEFAULT_PASSWORD));
-
-    password_user = models.CharField(max_length=128, verbose_name="Пароль")
-
+    password = models.CharField(max_length=128, verbose_name="Пароль");
                 
     #########################################        СМИ       #########################################
         
