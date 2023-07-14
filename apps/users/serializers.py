@@ -14,12 +14,14 @@ class UserCRUDSerializer(serializers.ModelSerializer):
         exclude = ['groups', 'user_permissions', 'resetPasswordUUID', 'resetPasswordDate']
 
     def create(self, validated_data):
+        print("priver")
         user = User(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user
 
     def update(self, instance, validated_data):
+        print("priver doni")
         for field, value in validated_data.items():
             if field == 'password':
                 instance.set_password(value)
@@ -42,7 +44,6 @@ class CustomTokenRefreshSerializer(TokenRefreshSerializer):
         return data
 
 
-class UserLoginSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id',)
+class LoginUserSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(required=True)

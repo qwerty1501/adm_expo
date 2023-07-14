@@ -1,13 +1,15 @@
 from django.contrib.auth import login
 from knox.views import LoginView as KnoxLoginView
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions, status, generics
 from rest_framework.authtoken.serializers import AuthTokenSerializer
+from django.contrib.auth.hashers import check_password
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from apps.users.models import User
 from apps.users.serializers import (
-    UserCRUDSerializer, CustomTokenRefreshSerializer
+    UserCRUDSerializer, CustomTokenRefreshSerializer, LoginUserSerializer
 )
 
 
@@ -24,7 +26,7 @@ class MVSDynamicPermission(permissions.BasePermission):
 
 class UserMVS(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    permission_classes = [MVSDynamicPermission]
+    # permission_classes = [MVSDynamicPermission]
     lookup_field = 'uniqueId'
     serializer_class = UserCRUDSerializer
 
@@ -56,12 +58,20 @@ class CustomTokenRefreshView(TokenRefreshView):
     serializer_class = CustomTokenRefreshSerializer
 
 
-class LoginAPI(KnoxLoginView):
-    permission_classes = (permissions.AllowAny,)
+class UserLoginView(APIView):
+    queryset = User.objects.all()
+    serializer_class = LoginUserSerializer
 
-    def post(self, request, format=None):
-        serializer = AuthTokenSerializer(data=request.data)
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        login(request, user)
-        return super(LoginAPI, self).post(request, format=None)
+        
+        try:
+            user = User.objects.get(email=serializer.validated_data['email'])
+            if user.check_password(serializer.validated_data['password']):
+                show_serializer = UserCRUDSerializer(user)
+                return Response(show_serializer.data, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            pass
+        
+        return Response(status=status.HTTP_403_FORBIDDEN)

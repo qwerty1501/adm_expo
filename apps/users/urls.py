@@ -1,7 +1,7 @@
 from django.urls import path
 from knox import views as knox_views
 
-from apps.users.views import UserMVS, CustomTokenRefreshView, LoginAPI
+from apps.users.views import UserMVS, CustomTokenRefreshView, UserLoginView
 
 userPlural = {
     'get': 'list',
@@ -32,9 +32,5 @@ urlpatterns = [
 
     path('check/', CustomTokenRefreshView.as_view()),
 
-    # path('login/', views.UserLogin.as_view()),
-
-    path('api/login/', LoginAPI.as_view(), name='login'),
-    path('api/logout/', knox_views.LogoutView.as_view(), name='logout'),
-    path('api/logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
+    path('login/', UserLoginView.as_view()),
 ]
