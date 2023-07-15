@@ -29,7 +29,6 @@ urlpatterns = [
     path('user/', UserMVS.as_view(userPlural)),
     path('user/<uuid:uniqueId>/', UserMVS.as_view(useSingle)),
 
-
     path('check/', CustomTokenRefreshView.as_view()),
 
     path('login/', UserLoginView.as_view()),

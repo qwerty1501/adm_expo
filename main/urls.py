@@ -13,10 +13,6 @@ schema_view = get_swagger_view(title='Pastebin API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #  LOGIN
-    path('api/v1/auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # Russia
     path('', include('apps.expo_app.urls')),
     path('', include('apps.main_page.urls')),
