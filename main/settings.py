@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'apps.expo_app.apps.ExpoAppConfig',
     'apps.main_page.apps.MainPageConfig',
     'apps.members.apps.MembersConfig',
+    'apps.news.apps.NewsConfig',
     'apps.registration.apps.RegistrationConfig',
     'apps.users.apps.UsersConfig',
     # APPS_EN

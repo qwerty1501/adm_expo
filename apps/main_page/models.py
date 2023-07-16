@@ -29,8 +29,8 @@ class PageOne(models.Model):
         verbose_name_plural = 'Начало'
         
     image = models.ImageField(verbose_name='Фотография', upload_to=get_upload_path, null=True, blank=True)
-    year = models.CharField(verbose_name='Год', max_length=8, blank=True, null=True)
-    title = models.CharField(verbose_name='Заголовок Экспо', max_length=32, blank=True, null=True)
+    year = models.CharField(verbose_name='Год', max_length=300, blank=True, null=True)
+    title = models.CharField(verbose_name='Заголовок Экспо', max_length=300, blank=True, null=True)
     description = models.TextField(verbose_name='Описание Экспо')
     
     def __str__(self):
@@ -44,7 +44,7 @@ class Members(models.Model):
         verbose_name = 'Участник'
         verbose_name_plural = 'Участники'
 
-    name = models.CharField(verbose_name="", max_length=64)
+    name = models.CharField(verbose_name="", max_length=300)
     image = models.ImageField(verbose_name='Фотография', upload_to=get_upload_path, null=True, blank=True)
 
 
@@ -55,7 +55,7 @@ class Forum(models.Model):
         verbose_name = 'О форуме'
         verbose_name_plural = 'О форуме'
         
-    title = models.CharField(verbose_name='Заголовок форма', max_length=32, blank=True, null=True)
+    title = models.CharField(verbose_name='Заголовок форма', max_length=300, blank=True, null=True)
     description = models.TextField(verbose_name='Описание форма')
     
     def __str__(self):
@@ -69,7 +69,7 @@ class Target(models.Model):
         verbose_name = 'Цель'
         verbose_name_plural = 'Цели'
         
-    title = models.CharField(verbose_name='Заголовок цели', max_length=32, blank=True, null=True)
+    title = models.CharField(verbose_name='Заголовок цели', max_length=300, blank=True, null=True)
     description = models.TextField(verbose_name='Описание цели')
     
     def __str__(self):
@@ -83,7 +83,7 @@ class Tasks(models.Model):
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
     
-    number = models.CharField(verbose_name='Номер задач', max_length=16)
+    number = models.CharField(verbose_name='Номер задач', max_length=300)
     description = models.TextField(verbose_name='Описание задач')
     
     def __str__(self):
@@ -97,10 +97,10 @@ class Ellipse(models.Model):
         verbose_name = 'Эллипс'
         verbose_name_plural = 'Эллипс'
         
-    company = models.CharField(verbose_name='Компаний', max_length=16, blank=True, null=True)
-    countries = models.CharField(verbose_name='Стран', max_length=16, blank=True, null=True)
-    meetings = models.CharField(verbose_name='B2B встречи', max_length=16, blank=True, null=True)
-    exhibitors = models.CharField(verbose_name='Экспонентов', max_length=16, blank=True, null=True)
+    company = models.CharField(verbose_name='Компаний', max_length=300, blank=True, null=True)
+    countries = models.CharField(verbose_name='Стран', max_length=300, blank=True, null=True)
+    meetings = models.CharField(verbose_name='B2B встречи', max_length=300, blank=True, null=True)
+    exhibitors = models.CharField(verbose_name='Экспонентов', max_length=300, blank=True, null=True)
 
 
 class Video(models.Model):
@@ -155,7 +155,7 @@ class Speakers(models.Model):
         verbose_name_plural = 'Спикеры'
         
     image = models.ImageField(verbose_name='Фотография', upload_to=get_upload_path, null=True, blank=True)
-    name = models.CharField(verbose_name="Полное имя", max_length=32)
+    name = models.CharField(verbose_name="Полное имя", max_length=300)
     description = models.TextField(verbose_name='Описание')
     
     def __str__(self):
@@ -183,7 +183,7 @@ class Sponsors(models.Model):
         verbose_name = 'Спонсор'
         verbose_name_plural = 'Спонсоры'
 
-    name =models.CharField(verbose_name='Название спонсара', max_length=32)
+    name =models.CharField(verbose_name='Название спонсара', max_length=300)
     loga = models.ImageField(verbose_name="Фотография нашего спонсара *(157x127)", upload_to=get_upload_path, validators=[validate_file_extension], null=True, blank=True)
     
     def __str__(self):
@@ -197,7 +197,7 @@ class Partners(models.Model):
         verbose_name = 'Партнёр'
         verbose_name_plural = 'Партёры'
 
-    name =models.CharField(verbose_name='Название партнёра', max_length=32)
+    name =models.CharField(verbose_name='Название партнёра', max_length=300)
     loga = models.ImageField(verbose_name="Логотип нашего партнёра *(157x127)", upload_to=get_upload_path, validators=[validate_file_extension], null=True, blank=True)
     
     def __str__(self):
@@ -211,7 +211,7 @@ class PlaceOffice(models.Model):
         verbose_name = 'Локация офиса'
         verbose_name_plural = 'Локация офиса'
     
-    phone = models.CharField(verbose_name='Номер телефона', max_length=16)
+    phone = models.CharField(verbose_name='Номер телефона', max_length=300)
     mail = models.URLField(verbose_name="Почта", blank=True, null=True)
     address = models.CharField(verbose_name='Адрес', max_length=255)
     location = models.CharField(verbose_name='Ссылка для локации', max_length=256, blank=True, null=True)

@@ -17,6 +17,7 @@ urlpatterns = [
     path('', include('apps.expo_app.urls')),
     path('', include('apps.main_page.urls')),
     path('', include('apps.members.urls')),
+    path('', include('apps.news.urls')),
     path('', include('apps.registration.urls')),
     path('', include('apps.users.urls')),
     # English
