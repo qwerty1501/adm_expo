@@ -49,7 +49,7 @@ class Stand(models.Model):
     status = models.CharField(verbose_name='Тип стендов', max_length=300, choices=STATUS, default=None)
     square = models.CharField(verbose_name='Площадь', max_length=300, blank=True, null=True)
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
-    price = models.CharField(verbose_name='', max_length=300, null=True, blank=True)
+    price = models.CharField(verbose_name='Цена', max_length=300, null=True, blank=True)
 
     def __str__(self):
         return self.status
