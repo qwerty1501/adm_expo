@@ -78,10 +78,6 @@ class User(AbstractUser):
     city = models.CharField(max_length=300, verbose_name="Город", **parametersForNull)
     birth = models.CharField(max_length=300, verbose_name="Дата рождения", **parametersForNull)
     
-    image_id_one = models.ImageField(verbose_name="Аватар", upload_to='images/passport_one', **parametersForNull)
-    image_id_two = models.ImageField(verbose_name="Аватар", upload_to='images/passport_two', **parametersForNull)
-    image_id_three = models.ImageField(verbose_name="Аватар", upload_to='images/passport_three', **parametersForNull)
-    
     workPhone = models.CharField(max_length=300, verbose_name="Телефон", **parametersForNull)
     personalPhone = models.CharField(max_length=300, verbose_name="WhatsApp", **parametersForNull)
 
