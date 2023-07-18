@@ -32,7 +32,7 @@ class User(AbstractUser):
         verbose_name_plural = "Пользователи"
 
     def __str__(self):
-        return self.uniqueId.__str__()
+        return self.email.__str__()
 
     username = None
     date_joined = None
